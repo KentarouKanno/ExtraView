@@ -10,6 +10,9 @@ import UIKit
 
 class BannerView: UIView {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var bannerImage: UIImageView!
+    
     var isShowBanner = false
 
     func showBanner(parentV: UIViewController,_ duration: NSTimeInterval = 0.6, _ delay: NSTimeInterval = 1.0) {
@@ -20,7 +23,7 @@ class BannerView: UIView {
             let width = UIScreen.mainScreen().bounds.width
             let height = self.frame.size.height
             
-            self.frame = CGRectMake(0, 14, width, height)
+            self.frame = CGRectMake(0, 64 - height, width, height)
             parentV.view.addSubview(self)
             
             UIView.animateWithDuration(duration, animations: { () -> Void in
@@ -28,7 +31,7 @@ class BannerView: UIView {
                 }) { (finish) -> Void in
                     
                     UIView.animateWithDuration(duration, delay: delay, options: .CurveEaseInOut, animations: { () -> Void in
-                        self.frame = CGRectMake(0, 14, width, height)
+                        self.frame = CGRectMake(0, 64 - height, width, height)
                         }) { (finish) -> Void in
                             
                             self.removeFromSuperview()
